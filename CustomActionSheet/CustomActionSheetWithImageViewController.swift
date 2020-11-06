@@ -7,21 +7,18 @@
 
 import UIKit
 
-protocol CustomActionSheetWithImageViewControllerDelegate {
-    func didSelectItem(at index : Int)
-}
-
 class CustomActionSheetWithImageViewController: UIViewController {
     
     @IBOutlet weak var viewActionSheetBackground: UIView!
     @IBOutlet weak var heightViewActionSheetBackground: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintViewActionSheet: NSLayoutConstraint!
+    @IBOutlet weak var bottemConstrainttableViewActionSheetItemList: NSLayoutConstraint!
+    @IBOutlet weak var tableViewActionSheetItemList: UITableView!
     
     var actionSheetBackgroundHeight : CGFloat = 400
     var cornerRadius : CGFloat = 30
-    
-    var delegate : CustomActionSheetWithImageViewControllerDelegate?
-    
+    var actionSheetItem : [ActionSheetType] = []
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -45,12 +42,27 @@ class CustomActionSheetWithImageViewController: UIViewController {
     }
     
     private func setupUI(){
+        /**
+         Adding the tap gesture for dismissing our custom action sheet
+         */
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapBackgroundView))
+        tapGesture.delegate = self
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(tapGesture)
+        
         self.heightViewActionSheetBackground.constant = actionSheetBackgroundHeight
+        
+        /**
+         setting up the tableViewActionSheetItemList
+         */
+        setupTableView()
     }
     
+    private func setupTableView(){
+        tableViewActionSheetItemList.delegate = self
+        tableViewActionSheetItemList.dataSource = self
+        
+    }
     
     private func playPresentAnimation(){
         UIView.animate(withDuration: 0.2) {
@@ -72,7 +84,6 @@ class CustomActionSheetWithImageViewController: UIViewController {
             } completion: { (_) in
                 self.dismiss(animated: false, completion: nil)
             }
-            
         }
         
     }
@@ -81,4 +92,22 @@ class CustomActionSheetWithImageViewController: UIViewController {
         self.playDismissAnimation()
     }
     
+}
+
+extension CustomActionSheetWithImageViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+}
+
+extension CustomActionSheetWithImageViewController : UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        touch.view == self.view
+    }
 }

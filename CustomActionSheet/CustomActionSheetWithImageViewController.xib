@@ -10,8 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomActionSheetWithImageViewController" customModule="CustomActionSheet" customModuleProvider="target">
             <connections>
+                <outlet property="bottemConstrainttableViewActionSheetItemList" destination="c6Z-9l-abQ" id="1eV-yM-jRz"/>
                 <outlet property="bottomConstraintViewActionSheet" destination="qJw-lU-1Ae" id="M92-Jm-WJw"/>
                 <outlet property="heightViewActionSheetBackground" destination="H7H-lk-sIt" id="BqW-EX-l4U"/>
+                <outlet property="tableViewActionSheetItemList" destination="2CS-zS-pFg" id="9QE-Xh-eho"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewActionSheetBackground" destination="EYL-QD-Toe" id="Rye-AR-TWU"/>
             </connections>
@@ -23,9 +25,19 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYL-QD-Toe">
                     <rect key="frame" x="0.0" y="496" width="414" height="400"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2CS-zS-pFg">
+                            <rect key="frame" x="20" y="20" width="374" height="345"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="400" id="H7H-lk-sIt"/>
+                        <constraint firstAttribute="bottom" secondItem="2CS-zS-pFg" secondAttribute="bottom" constant="35" id="c6Z-9l-abQ"/>
+                        <constraint firstItem="2CS-zS-pFg" firstAttribute="leading" secondItem="EYL-QD-Toe" secondAttribute="leading" constant="20" id="qE0-dx-KkQ"/>
+                        <constraint firstItem="2CS-zS-pFg" firstAttribute="top" secondItem="EYL-QD-Toe" secondAttribute="top" constant="20" id="uGR-JS-kAo"/>
+                        <constraint firstAttribute="trailing" secondItem="2CS-zS-pFg" secondAttribute="trailing" constant="20" id="vya-yD-8Ow"/>
                     </constraints>
                 </view>
             </subviews>
