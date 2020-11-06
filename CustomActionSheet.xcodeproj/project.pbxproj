@@ -15,6 +15,9 @@
 		D0898CAA25555A4E00ED75BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0898CA825555A4E00ED75BC /* LaunchScreen.storyboard */; };
 		D0898CB525555A4F00ED75BC /* CustomActionSheetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0898CB425555A4F00ED75BC /* CustomActionSheetTests.swift */; };
 		D0898CC025555A4F00ED75BC /* CustomActionSheetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0898CBF25555A4F00ED75BC /* CustomActionSheetUITests.swift */; };
+		D0898CD225555AB600ED75BC /* CustomActionSheetWithImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0898CD025555AB600ED75BC /* CustomActionSheetWithImageViewController.swift */; };
+		D0898CD325555AB600ED75BC /* CustomActionSheetWithImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0898CD125555AB600ED75BC /* CustomActionSheetWithImageViewController.xib */; };
+		D0898D0225556B3100ED75BC /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0898D0125556B3100ED75BC /* UIView + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		D0898CBB25555A4F00ED75BC /* CustomActionSheetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomActionSheetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0898CBF25555A4F00ED75BC /* CustomActionSheetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetUITests.swift; sourceTree = "<group>"; };
 		D0898CC125555A4F00ED75BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0898CD025555AB600ED75BC /* CustomActionSheetWithImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetWithImageViewController.swift; sourceTree = "<group>"; };
+		D0898CD125555AB600ED75BC /* CustomActionSheetWithImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomActionSheetWithImageViewController.xib; sourceTree = "<group>"; };
+		D0898D0125556B3100ED75BC /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,9 @@
 				D0898CA625555A4E00ED75BC /* Assets.xcassets */,
 				D0898CA825555A4E00ED75BC /* LaunchScreen.storyboard */,
 				D0898CAB25555A4E00ED75BC /* Info.plist */,
+				D0898CD025555AB600ED75BC /* CustomActionSheetWithImageViewController.swift */,
+				D0898CD125555AB600ED75BC /* CustomActionSheetWithImageViewController.xib */,
+				D0898D0125556B3100ED75BC /* UIView + Extension.swift */,
 			);
 			path = CustomActionSheet;
 			sourceTree = "<group>";
@@ -232,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0898CAA25555A4E00ED75BC /* LaunchScreen.storyboard in Resources */,
+				D0898CD325555AB600ED75BC /* CustomActionSheetWithImageViewController.xib in Resources */,
 				D0898CA725555A4E00ED75BC /* Assets.xcassets in Resources */,
 				D0898CA525555A4D00ED75BC /* Main.storyboard in Resources */,
 			);
@@ -259,7 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0898CA225555A4D00ED75BC /* ViewController.swift in Sources */,
+				D0898CD225555AB600ED75BC /* CustomActionSheetWithImageViewController.swift in Sources */,
 				D0898C9E25555A4D00ED75BC /* AppDelegate.swift in Sources */,
+				D0898D0225556B3100ED75BC /* UIView + Extension.swift in Sources */,
 				D0898CA025555A4D00ED75BC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
