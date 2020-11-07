@@ -92,7 +92,7 @@ class CustomActionSheetWithImageViewController: UIViewController {
         }
     }
     
-    private func playDismissAnimation(){
+    private func playDismissAnimation(index : Int? = nil){
         
         UIView.animate(withDuration: 0.3) {
             self.viewActionSheetBackground.center.y += (self.actionSheetBackgroundHeight)
@@ -100,7 +100,12 @@ class CustomActionSheetWithImageViewController: UIViewController {
             UIView.animate(withDuration: 0.2) {
                 self.view.alpha = 0
             } completion: { (_) in
-                self.dismiss(animated: false, completion: nil)
+                self.dismiss(animated: false) {
+                    if  let index = index,
+                        let action = self.actionSheetItemList[index].action{
+                        action()
+                    }
+                }
             }
         }
         
@@ -125,10 +130,8 @@ extension CustomActionSheetWithImageViewController : UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let action = actionSheetItemList[indexPath.row].action{
-            action()
-            playDismissAnimation()
-        }
+        
+        playDismissAnimation(index: indexPath.row)
     }
     
 }
