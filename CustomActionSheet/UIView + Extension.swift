@@ -7,6 +7,28 @@
 
 import UIKit
 
+extension UIDevice {
+    var hasNotch: Bool {
+        
+        var bottom : CGFloat = 0
+        
+        if #available(iOS 13.0, *) {
+            let keyWindow = UIApplication.shared.connectedScenes
+                .filter({$0.activationState == .foregroundActive})
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
+            
+            bottom = keyWindow?.safeAreaInsets.bottom ?? 0
+        } else {
+            bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        }
+        
+        return bottom > 0
+    }
+}
+
 extension UIView {
     func roundCorners(topLeft: CGFloat = 0, topRight: CGFloat = 0, bottomLeft: CGFloat = 0, bottomRight: CGFloat = 0) {//(topLeft: CGFloat, topRight: CGFloat, bottomLeft: CGFloat, bottomRight: CGFloat) {
         let topLeftRadius = CGSize(width: topLeft, height: topLeft)

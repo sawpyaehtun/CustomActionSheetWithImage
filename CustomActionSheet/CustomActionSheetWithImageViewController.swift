@@ -15,10 +15,13 @@ class CustomActionSheetWithImageViewController: UIViewController {
     @IBOutlet weak var bottemConstrainttableViewActionSheetItemList: NSLayoutConstraint!
     @IBOutlet weak var tableViewActionSheetItemList: UITableView!
     
+    var topTableViewActionSheetItemList : CGFloat = 20
     var actionSheetBackgroundHeight : CGFloat = 400
+    var bottomTableViewActionSheetItemList : CGFloat = 35
     var cornerRadius : CGFloat = 30
-    var actionSheetItem : [ActionSheetType] = []
-        
+    var actionSheetItemList : [ActionSheetType] = []
+    var rowHeightTableView : CGFloat = "text".size(withAttributes:[.font: UIFont.systemFont(ofSize:18.0)]).height * 3
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -49,19 +52,34 @@ class CustomActionSheetWithImageViewController: UIViewController {
         tapGesture.delegate = self
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(tapGesture)
-        
-        self.heightViewActionSheetBackground.constant = actionSheetBackgroundHeight
+        setupTableView()
         
         /**
-         setting up the tableViewActionSheetItemList
+         table view bottom constraint for notch device
          */
-        setupTableView()
+        bottomTableViewActionSheetItemList = UIDevice.current.hasNotch ? 35 : 0
+        bottemConstrainttableViewActionSheetItemList.constant = bottomTableViewActionSheetItemList
+        
+        /**
+         reload the tableView to get contentSize
+         */
+        tableViewActionSheetItemList.reloadData()
+        
+        
+        /**
+         setting up the background size
+         */
+        actionSheetBackgroundHeight = (rowHeightTableView * CGFloat(actionSheetItemList.count)) + topTableViewActionSheetItemList + bottomTableViewActionSheetItemList
+        self.heightViewActionSheetBackground.constant = actionSheetBackgroundHeight
+        
     }
     
     private func setupTableView(){
         tableViewActionSheetItemList.delegate = self
         tableViewActionSheetItemList.dataSource = self
-        
+        tableViewActionSheetItemList.register(UINib(nibName: String(describing: InternetProviderPhoneItemTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: InternetProviderPhoneItemTableViewCell.self))
+        tableViewActionSheetItemList.rowHeight = rowHeightTableView
+        tableViewActionSheetItemList.bounces = false
     }
     
     private func playPresentAnimation(){
@@ -97,11 +115,20 @@ class CustomActionSheetWithImageViewController: UIViewController {
 extension CustomActionSheetWithImageViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return actionSheetItemList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InternetProviderPhoneItemTableViewCell.self), for: indexPath) as! InternetProviderPhoneItemTableViewCell
+        cell.setupCell(phoneNumber: actionSheetItemList[indexPath.row].title ?? "")
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let action = actionSheetItemList[indexPath.row].action{
+            action()
+            playDismissAnimation()
+        }
     }
     
 }

@@ -18,6 +18,8 @@
 		D0898CD225555AB600ED75BC /* CustomActionSheetWithImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0898CD025555AB600ED75BC /* CustomActionSheetWithImageViewController.swift */; };
 		D0898CD325555AB600ED75BC /* CustomActionSheetWithImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0898CD125555AB600ED75BC /* CustomActionSheetWithImageViewController.xib */; };
 		D0898D0225556B3100ED75BC /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0898D0125556B3100ED75BC /* UIView + Extension.swift */; };
+		D0A7E9A925564DE1008D82A1 /* InternetProviderPhoneItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A7E9A725564DE1008D82A1 /* InternetProviderPhoneItemTableViewCell.swift */; };
+		D0A7E9AA25564DE1008D82A1 /* InternetProviderPhoneItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A7E9A825564DE1008D82A1 /* InternetProviderPhoneItemTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		D0898CD025555AB600ED75BC /* CustomActionSheetWithImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetWithImageViewController.swift; sourceTree = "<group>"; };
 		D0898CD125555AB600ED75BC /* CustomActionSheetWithImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomActionSheetWithImageViewController.xib; sourceTree = "<group>"; };
 		D0898D0125556B3100ED75BC /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		D0A7E9A725564DE1008D82A1 /* InternetProviderPhoneItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetProviderPhoneItemTableViewCell.swift; sourceTree = "<group>"; };
+		D0A7E9A825564DE1008D82A1 /* InternetProviderPhoneItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InternetProviderPhoneItemTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 		D0898C9C25555A4D00ED75BC /* CustomActionSheet */ = {
 			isa = PBXGroup;
 			children = (
+				D0A7E9A725564DE1008D82A1 /* InternetProviderPhoneItemTableViewCell.swift */,
+				D0A7E9A825564DE1008D82A1 /* InternetProviderPhoneItemTableViewCell.xib */,
 				D0898C9D25555A4D00ED75BC /* AppDelegate.swift */,
 				D0898C9F25555A4D00ED75BC /* SceneDelegate.swift */,
 				D0898CA125555A4D00ED75BC /* ViewController.swift */,
@@ -242,6 +248,7 @@
 			files = (
 				D0898CAA25555A4E00ED75BC /* LaunchScreen.storyboard in Resources */,
 				D0898CD325555AB600ED75BC /* CustomActionSheetWithImageViewController.xib in Resources */,
+				D0A7E9AA25564DE1008D82A1 /* InternetProviderPhoneItemTableViewCell.xib in Resources */,
 				D0898CA725555A4E00ED75BC /* Assets.xcassets in Resources */,
 				D0898CA525555A4D00ED75BC /* Main.storyboard in Resources */,
 			);
@@ -271,6 +278,7 @@
 				D0898CA225555A4D00ED75BC /* ViewController.swift in Sources */,
 				D0898CD225555AB600ED75BC /* CustomActionSheetWithImageViewController.swift in Sources */,
 				D0898C9E25555A4D00ED75BC /* AppDelegate.swift in Sources */,
+				D0A7E9A925564DE1008D82A1 /* InternetProviderPhoneItemTableViewCell.swift in Sources */,
 				D0898D0225556B3100ED75BC /* UIView + Extension.swift in Sources */,
 				D0898CA025555A4D00ED75BC /* SceneDelegate.swift in Sources */,
 			);
