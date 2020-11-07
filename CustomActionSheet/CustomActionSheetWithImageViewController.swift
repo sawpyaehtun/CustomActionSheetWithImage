@@ -133,7 +133,7 @@ class CustomActionSheetWithImageViewController: UIViewController {
         
         if sender.state == .ended {
             let dragVelocity = sender.velocity(in: view)
-            if dragVelocity.y >= 1300 {
+            if dragVelocity.y >= 1300 || ((viewActionSheetBackground.frame.origin.y - (pointOrigin?.y ?? 0.0)) > (actionSheetBackgroundHeight/2)){
                 // Velocity fast enough to dismiss the uiview
                 self.playDismissAnimation()
             } else {
