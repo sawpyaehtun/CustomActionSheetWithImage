@@ -21,6 +21,7 @@ class CustomActionSheetWithImageViewController: UIViewController {
     var cornerRadius : CGFloat = 30
     var actionSheetItemList : [ActionSheetType] = []
     var rowHeightTableView : CGFloat = "text".size(withAttributes:[.font: UIFont.systemFont(ofSize:18.0)]).height * 3
+    var pointOrigin : CGPoint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,11 @@ class CustomActionSheetWithImageViewController: UIViewController {
         /**
          Adding the tap gesture for dismissing our custom action sheet
          */
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
+        viewActionSheetBackground.isUserInteractionEnabled = true
+        viewActionSheetBackground.addGestureRecognizer(panGesture)
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapBackgroundView))
         tapGesture.delegate = self
         self.view.isUserInteractionEnabled = true
@@ -88,6 +94,11 @@ class CustomActionSheetWithImageViewController: UIViewController {
         } completion: { (_) in
             UIView.animate(withDuration: 0.3) {
                 self.viewActionSheetBackground.center.y -= (self.actionSheetBackgroundHeight)
+            } completion: { (_) in
+                /**
+                 save the origin
+                 */
+                self.pointOrigin = self.viewActionSheetBackground.frame.origin
             }
         }
     }
@@ -109,6 +120,29 @@ class CustomActionSheetWithImageViewController: UIViewController {
             }
         }
         
+    }
+    
+    @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: view)
+        
+        // Not allowing the user to drag the view upward
+        guard translation.y >= 0 else { return }
+        
+        // setting x as 0 because we don't want users to move the frame side ways!! Only want straight up or down
+        viewActionSheetBackground.frame.origin = CGPoint(x: 0, y: self.pointOrigin!.y + translation.y)
+        
+        if sender.state == .ended {
+            let dragVelocity = sender.velocity(in: view)
+            if dragVelocity.y >= 1300 {
+                // Velocity fast enough to dismiss the uiview
+                self.playDismissAnimation()
+            } else {
+                // Set back to original position of the view controller
+                UIView.animate(withDuration: 0.3) {
+                    self.viewActionSheetBackground.frame.origin = self.pointOrigin ?? CGPoint(x: 0, y: 400)
+                }
+            }
+        }
     }
     
     @objc func didTapBackgroundView(){
